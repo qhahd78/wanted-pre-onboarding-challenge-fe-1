@@ -1,7 +1,13 @@
 import React from "react";
+import LoginForm from "../../components/organisms/LoginForm";
+import { LoginPageContainer } from "./style";
 
-const index = () => {
-  return <div>index</div>;
+const LoginPage = () => {
+  return (
+    <LoginPageContainer>
+      <LoginForm />
+    </LoginPageContainer>
+  );
 };
 
-export default index;
+export default LoginPage;
