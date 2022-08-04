@@ -1,4 +1,4 @@
-import { StyledButton } from "./style";
+import { StyledButton, StyledDeleteButton } from "./style";
 
 interface ButtonProperties {
   buttonName: string;
@@ -26,4 +26,17 @@ const Button = ({
   );
 };
 
-export default Button;
+const DeleteButton = ({
+  buttonName,
+  buttonHeight,
+  children,
+  onClickFunc,
+}: ButtonProperties) => {
+  return (
+    <StyledDeleteButton buttonHeight={buttonHeight}>
+      {children}
+    </StyledDeleteButton>
+  );
+};
+
+export { Button, DeleteButton };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../atoms/Button";
+import { Button } from "../../atoms/Button/index";
 import Input from "../../atoms/Input";
 import { LoginFormContainer, LoginTitle, SignupText } from "./style";
 

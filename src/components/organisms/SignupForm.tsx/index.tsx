@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../atoms/Button";
+import { Button } from "../../atoms/Button/index";
 import Input from "../../atoms/Input";
 import { SignupFormContainer, SignupTitle } from "./style";
 

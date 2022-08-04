@@ -2,6 +2,10 @@ import styled from "styled-components";
 import COLOR from "../../../../styles/common/color";
 import { FONT_STYLES } from "../../../../styles/common/font-style";
 
+const PannelContainer = styled.div`
+  display: flex;
+`;
+
 const ListPannelContainer = styled.div`
   width: 50%;
   height: 100vh;
@@ -32,4 +36,9 @@ const ListContentBox = styled.div`
   }
 `;
 
-export { ListPannelContainer, ListPannelTitle, ListContentBox };
+export {
+  ListPannelContainer,
+  ListPannelTitle,
+  ListContentBox,
+  PannelContainer,
+};

@@ -4,6 +4,8 @@ const COLOR = {
   PURPLE_0: "#a2a7ff",
 
   GRAY_0: "#efedff",
+
+  RED_0: "#FF8C8F",
 };
 
 export default COLOR;
