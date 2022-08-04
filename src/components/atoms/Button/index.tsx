@@ -4,9 +4,7 @@ interface ButtonProperties {
   buttonName: string;
   buttonHeight?: number;
   children: React.ReactNode;
-  onClickFunc?: (
-    e: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>
-  ) => void;
+  onClickFunc?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({

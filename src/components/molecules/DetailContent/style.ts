@@ -8,7 +8,7 @@ const DetailContentContainer = styled.div`
 
 const DetailTitleBox = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 `;
 
 const DetailTitle = styled.p`
@@ -17,8 +17,7 @@ const DetailTitle = styled.p`
 `;
 
 const DetailContentBox = styled.div`
-  height: 810px;
-  padding: 40px 0;
+  padding: 30px 0;
 `;
 
 const DetailDate = styled.p`
@@ -32,6 +31,16 @@ const DetailContentText = styled.p`
   font-size: 20px;
 `;
 
+const DetailEditButton = styled.p`
+  ${FONT_STYLES.P_B}
+  font-size: 20px;
+  margin-left: auto;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export {
   DetailContentContainer,
   DetailTitle,
@@ -39,4 +48,5 @@ export {
   DetailDate,
   DetailContentBox,
   DetailTitleBox,
+  DetailEditButton,
 };
