@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import COLOR from "../common/color";
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -13,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         background-color: white; 
         ::-webkit-scrollbar{ display:none; }
         overflow-x: hidden;
+        color: ${COLOR.BLACK_0}
     }
     *{
         box-sizing: border-box;
