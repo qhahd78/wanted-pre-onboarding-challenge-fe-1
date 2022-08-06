@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledInput } from "./style";
+import { StyledContentInput, StyledInput } from "./style";
 
 interface InputProperties {
   inputName: string;
@@ -35,4 +35,14 @@ const Input = ({
   );
 };
 
-export default Input;
+const ListContentInput = ({ ...props }: InputProperties) => {
+  return (
+    <StyledContentInput
+      name={props.inputName}
+      onChange={props.onChangeFunc}
+      placeholder={props.placeholder}
+    />
+  );
+};
+
+export { Input, ListContentInput };

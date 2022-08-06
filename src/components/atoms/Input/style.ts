@@ -21,4 +21,16 @@ const StyledInput = styled.input<{
   }
 `;
 
-export { StyledInput };
+const StyledContentInput = styled.input`
+  width: 100%;
+  height: 30px;
+  font-size: 17px;
+  display: block;
+  border: none;
+  background-color: transparent;
+  :focus {
+    outline: transparent;
+  }
+`;
+
+export { StyledInput, StyledContentInput };

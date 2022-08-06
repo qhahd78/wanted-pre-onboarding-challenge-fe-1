@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Login } from "../../../common/api/Auth";
 import { Button } from "../../atoms/Button/index";
-import Input from "../../atoms/Input";
+import { Input } from "../../atoms/Input";
 import { LoginFormContainer, LoginTitle, SignupText } from "./style";
 
 type Inputs = {

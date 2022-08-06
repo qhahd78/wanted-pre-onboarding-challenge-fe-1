@@ -31,4 +31,22 @@ const TodoDate = styled.p`
   padding-top: 8px;
 `;
 
-export { ListContentContainer, TodoTitle, TodoDate };
+const NewListContentContainer = styled.div<{
+  visible?: boolean;
+}>`
+  width: 100%;
+  height: 80px;
+  display: ${({ visible }) => (visible ? "flex" : "none")};
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+  div input {
+    margin-bottom: 5px;
+  }
+  & > svg {
+    cursor: pointer;
+  }
+`;
+
+export { ListContentContainer, TodoTitle, TodoDate, NewListContentContainer };

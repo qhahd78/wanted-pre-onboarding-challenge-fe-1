@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../../atoms/Button/index";
-import Input from "../../atoms/Input";
+import { Input } from "../../atoms/Input";
 import { SignupFormContainer, SignupTitle } from "./style";
 import { Signup } from "../../../common/api/Auth";
 import { useNavigate } from "react-router-dom";
@@ -40,7 +40,6 @@ const SignupForm = () => {
         alert(`${res.data.message}`);
         navigate("/home");
       }
-      console.log(res);
     } catch (error) {
       alert("입력사항을 다시 확인하고 회원가입 해주세요.");
       return error;
