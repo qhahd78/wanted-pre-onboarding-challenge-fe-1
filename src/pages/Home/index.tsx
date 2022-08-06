@@ -1,8 +1,8 @@
 import React from "react";
-import HomePannel from "../../components/organisms/HomePannel";
+import Pannel from "../../components/organisms/HomePannel/Pannel";
 
 const HomePage = () => {
-  return <HomePannel />;
+  return <Pannel />;
 };
 
 export default HomePage;

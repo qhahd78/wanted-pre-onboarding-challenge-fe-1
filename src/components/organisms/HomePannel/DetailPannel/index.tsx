@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { GetTodoById } from "../../../../common/api/Todo";
 import DetailContent from "../../../molecules/DetailContent";
 import { DetailPannelContainer } from "./style";
 
 interface DetailPannelProperties {
-  title: string;
-  content: string;
+  todoId?: string | null;
 }
 
-const DetailPannel = ({ title, content }: DetailPannelProperties) => {
+const DetailPannel = ({ todoId }: DetailPannelProperties) => {
+  const [Todo, setTodo] = useState({});
+
+  const fetch = async () => {
+    try {
+      const res = await GetTodoById(todoId);
+      setTodo(res.data.data);
+    } catch (error) {
+      return error;
+    }
+  };
+
+  useEffect(() => {
+    fetch();
+  }, [todoId]);
+
   return (
     <DetailPannelContainer>
-      <DetailContent title={title} content={content} />
+      <DetailContent {...Todo} />
     </DetailPannelContainer>
   );
 };

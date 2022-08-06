@@ -1,16 +1,23 @@
 import Token from "../../hooks/getToken";
 import Api from "./Api";
 
-const GetTodos = async (param?: any) => {
+export const GetTodos = async (param?: any) => {
   const response = await Api({
     url: "/todos",
     token: Token(),
   });
-  // console.log(response);
   return response;
 };
 
-const CreateTodo = async (param: any) => {
+export const GetTodoById = async (param: any) => {
+  const response = await Api({
+    url: `/todos/${param}`,
+    token: Token(),
+  });
+  return response;
+};
+
+export const CreateTodo = async (param: any) => {
   const response = await Api({
     url: "/todos",
     type: "POST",
@@ -19,5 +26,3 @@ const CreateTodo = async (param: any) => {
   });
   return response;
 };
-
-export { GetTodos, CreateTodo };

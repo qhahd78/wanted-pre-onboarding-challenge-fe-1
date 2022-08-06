@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { TodosResponse } from "../../../types/api";
 import { TitleTextBox, ContentTextBox } from "../../atoms/TextBox";
 import {
   DetailContentBox,
@@ -11,12 +12,13 @@ import {
   DetailTitleBox,
 } from "./style";
 
-interface DetailContentProperties {
-  title: string;
-  content: string;
-}
-
-const DetailContent = ({ title, content }: DetailContentProperties) => {
+const DetailContent = ({
+  title,
+  content,
+  id,
+  createdAt,
+  updatedAt,
+}: TodosResponse) => {
   const [IsEdit, setIsEdit] = useState<boolean>(false);
   return (
     <DetailContentContainer>

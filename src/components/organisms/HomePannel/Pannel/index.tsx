@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { CreateTodo, GetTodos } from "../../../../common/api/Todo";
 import { TodosResponse } from "../../../../types/api";
 import PlusButton from "../../../atoms/PlusButton";
@@ -15,37 +16,19 @@ type Inputs = {
   [key: string]: string;
 };
 
-// const TESTDATA = {
-//   data: [
-//     {
-//       title: "hi",
-//       content: "hello",
-//       id: "z3FGrcRL55qDCFnP4KRtn",
-//       createdAt: "2022-07-24T14:15:55.537Z",
-//       updatedAt: "2022-07-24T14:15:55.537Z",
-//     },
-//     {
-//       title: "안뇽하세요",
-//       content: "메롱메롱",
-//       id: "z3FGrcRL55qDCFnP4KRtn",
-//       createdAt: "2022-07-24T14:15:55.537Z",
-//       updatedAt: "2022-07-24T14:15:55.537Z",
-//     },
-//   ],
-// };
-
 const Pannel = () => {
-  const [CurrentTodo, setCurrentTodo] = useState(0);
   const [Visible, setVisible] = useState(false);
   const [Todos, setTodos] = useState<TodosResponse[]>([]);
   const [inputs, setinputs] = useState<Inputs>({});
+
+  const navigate = useNavigate();
+  const [SearchParams, setSearchParams] = useSearchParams();
 
   // api
   const fetch = async () => {
     try {
       const res = await GetTodos();
       setTodos(res.data.data);
-      console.log(res.data.data);
     } catch (error) {
       return error;
     }
@@ -53,9 +36,7 @@ const Pannel = () => {
 
   const createTodo = useCallback(async () => {
     try {
-      const res = await CreateTodo(inputs);
-      console.log(inputs);
-      console.log(res);
+      await CreateTodo(inputs);
       fetch();
       setVisible(false);
     } catch (error) {
@@ -68,8 +49,10 @@ const Pannel = () => {
   }, []);
 
   // local handling
-  const selectTodo = (index: number) => {
-    setCurrentTodo(index);
+  const selectTodo = (todoId?: string) => {
+    navigate({
+      search: `?todo=${todoId}`,
+    });
   };
 
   const createNewList = () => {
@@ -89,15 +72,16 @@ const Pannel = () => {
         <ListPannelTitle>할 일 목록</ListPannelTitle>
         <ListContentBox>
           {Todos.length > 0 ? (
-            Todos.map((todo, index) => (
+            Todos.map((todo) => (
               <ListContent
+                key={todo.id}
                 title={todo.title}
-                className={index === CurrentTodo ? "active" : ""}
-                onClickFunc={() => selectTodo(index)}
+                className={todo.id === SearchParams.get("todo") ? "active" : ""}
+                onClickFunc={() => selectTodo(todo.id)}
               />
             ))
           ) : (
-            <p>리스트가 ㅇ벗음</p>
+            <p>새로운 할 일을 생성해보세요.</p>
           )}
           <NewListContent
             visible={Visible}
@@ -108,10 +92,7 @@ const Pannel = () => {
         <PlusButton onClickFunc={createNewList} />
       </ListPannelContainer>
       {Todos.length > 0 ? (
-        <DetailPannel
-          title={Todos[CurrentTodo].title}
-          content={Todos[CurrentTodo].content}
-        />
+        <DetailPannel todoId={SearchParams.get("todo")} />
       ) : (
         <></>
       )}

@@ -10,7 +10,7 @@ import { ReactComponent as CheckIcon } from "../../../assets/icons/icon-check.sv
 import { ListContentInput } from "../../atoms/Input";
 
 interface ListContentProperties {
-  title: string;
+  title?: string;
   createdTime?: string;
   updatedTime?: string;
   className?: string;
