@@ -15,6 +15,7 @@ interface ListContentProperties {
   updatedTime?: string;
   className?: string;
   onClickFunc?: () => void;
+  deleteFunc?: () => void;
 }
 
 interface NewListContentProperties {
@@ -29,6 +30,7 @@ const ListContent = ({
   updatedTime,
   className,
   onClickFunc,
+  deleteFunc,
 }: ListContentProperties) => {
   return (
     <ListContentContainer className={className} onClick={onClickFunc}>
@@ -36,7 +38,11 @@ const ListContent = ({
         <TodoTitle>{title}</TodoTitle>
         <TodoDate>{updatedTime ? updatedTime : createdTime}</TodoDate>
       </div>
-      <TrashIcon width={30} height={30} onClick={onClickFunc} />
+      {className === "active" ? (
+        <TrashIcon width={30} height={30} onClick={deleteFunc} />
+      ) : (
+        <></>
+      )}
     </ListContentContainer>
   );
 };

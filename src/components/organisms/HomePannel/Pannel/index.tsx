@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { CreateTodo, GetTodos } from "../../../../common/api/Todo";
+import { CreateTodo, DeleteTodo, GetTodos } from "../../../../common/api/Todo";
 import { TodosResponse } from "../../../../types/api";
 import PlusButton from "../../../atoms/PlusButton";
 import { ListContent, NewListContent } from "../../../molecules/ListContent";
@@ -24,7 +24,7 @@ const Pannel = () => {
   const navigate = useNavigate();
   const [SearchParams, setSearchParams] = useSearchParams();
 
-  // api
+  // get todos
   const fetch = async () => {
     try {
       const res = await GetTodos();
@@ -34,6 +34,7 @@ const Pannel = () => {
     }
   };
 
+  // create todo
   const createTodo = useCallback(async () => {
     try {
       await CreateTodo(inputs);
@@ -42,7 +43,18 @@ const Pannel = () => {
     } catch (error) {
       return error;
     }
+    // create 후 input 비우기
   }, [inputs]);
+
+  // delete todo
+  const deleteTodo = useCallback(async (todoId?: string) => {
+    try {
+      await DeleteTodo(todoId);
+      fetch();
+    } catch (error) {
+      return error;
+    }
+  }, []);
 
   useEffect(() => {
     fetch();
@@ -78,6 +90,7 @@ const Pannel = () => {
                 title={todo.title}
                 className={todo.id === SearchParams.get("todo") ? "active" : ""}
                 onClickFunc={() => selectTodo(todo.id)}
+                deleteFunc={() => deleteTodo(todo.id)}
               />
             ))
           ) : (
