@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetTodoById } from "../../../../common/api/Todo";
+import { GetTodoById, UpdateTodo } from "../../../../common/api/Todo";
 import DetailContent from "../../../molecules/DetailContent";
 import { DetailPannelContainer } from "./style";
 
@@ -14,6 +14,7 @@ const DetailPannel = ({ todoId }: DetailPannelProperties) => {
     try {
       const res = await GetTodoById(todoId);
       setTodo(res.data.data);
+      console.log(Todo);
     } catch (error) {
       return error;
     }
@@ -23,9 +24,14 @@ const DetailPannel = ({ todoId }: DetailPannelProperties) => {
     fetch();
   }, [todoId]);
 
+  const updateTodo = async (todoData: any) => {
+    const res = await UpdateTodo(todoId, todoData);
+    console.log(res);
+  };
+
   return (
     <DetailPannelContainer>
-      <DetailContent {...Todo} />
+      <DetailContent {...Todo} updateFunc={updateTodo} />
     </DetailPannelContainer>
   );
 };

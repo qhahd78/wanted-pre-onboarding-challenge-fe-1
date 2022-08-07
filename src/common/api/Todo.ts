@@ -2,7 +2,7 @@ import Token from "../../hooks/getToken";
 import Api from "./Api";
 
 // todos
-export const GetTodos = async (param?: any) => {
+export const GetTodos = async () => {
   const response = await Api({
     url: "/todos",
     token: Token(),
@@ -35,6 +35,16 @@ export const DeleteTodo = async (param: any) => {
   const response = await Api({
     url: `/todos/${param}`,
     type: "DELETE",
+    token: Token(),
+  });
+  return response;
+};
+
+export const UpdateTodo = async (id: any, param: any) => {
+  const response = await Api({
+    url: `/todos/${id}`,
+    type: "PUT",
+    param,
     token: Token(),
   });
   return response;

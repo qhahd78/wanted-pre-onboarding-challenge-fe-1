@@ -4,14 +4,15 @@ import { StyledContentTextBox, StyledTitleTextBox } from "./style";
 interface TextBoxProperties {
   textboxName: string;
   placeholder?: string;
+  textValue?: string;
 }
 
-const TitleTextBox = ({ textboxName, placeholder }: TextBoxProperties) => {
-  return <StyledTitleTextBox name={textboxName} placeholder={placeholder} />;
+const TitleTextBox = ({ textboxName, textValue }: TextBoxProperties) => {
+  return <StyledTitleTextBox name={textboxName} value={textValue} />;
 };
 
-const ContentTextBox = ({ textboxName, placeholder }: TextBoxProperties) => {
-  return <StyledContentTextBox name={textboxName} placeholder={placeholder} />;
+const ContentTextBox = ({ textboxName, textValue }: TextBoxProperties) => {
+  return <StyledContentTextBox name={textboxName} value={textValue} />;
 };
 
 export { TitleTextBox, ContentTextBox };

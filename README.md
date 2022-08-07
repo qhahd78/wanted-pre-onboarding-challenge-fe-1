@@ -24,7 +24,7 @@
   - ✅목록 / 상세 영역으로 나누어 구현
   - ✅Todo 목록 (getTodos-GET)
   - ✅Todo 추가 (createTodo)
-  - ❌Todo 수정 (updateTodo)
+  - ✅Todo 수정 (updateTodo)
   - ✅Todo 삭제 (deleteTodo)
 
 - 한 화면 내에서 Todo List 와 개별 Todo 의 상세를 확인
@@ -33,4 +33,4 @@
   - ✅개별 Todo 를 조회 순서에 따라 페이지 뒤로가기를 통하여 조회
 
 - 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현
-  - ✅수정되는 Todo 의 내용이 목록에도 실시간으로 반영
+  - ❌수정되는 Todo 의 내용이 목록에도 실시간으로 반영
