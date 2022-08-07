@@ -5,6 +5,7 @@ interface ButtonProperties {
   buttonHeight?: number;
   children: React.ReactNode;
   onClickFunc?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  idDisabled?: boolean;
 }
 
 const Button = ({
@@ -12,12 +13,14 @@ const Button = ({
   buttonHeight,
   children,
   onClickFunc,
+  idDisabled,
 }: ButtonProperties) => {
   return (
     <StyledButton
       name={buttonName}
       onClick={onClickFunc}
       buttonHeight={buttonHeight}
+      disabled={idDisabled}
     >
       {children}
     </StyledButton>

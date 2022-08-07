@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+## :: 원티드 프리온보딩 챌린지 프론트엔드 코스 사전과제 ::
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Assignment 1 - Login/SignUp
 
-## Available Scripts
+- /auth 경로에 로그인/ 회원가입 기능을 개발
 
-In the project directory, you can run:
+  - ✅ 로그인(/), 회원가입(/signup)을 별도의 경로로 분리
+  - ✅최소한 이메일, 비밀번호 input, 제출 button을 갖도록 구성
 
-### `npm start`
+- 이메일과 비밀번호의 유효성 확인
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - ✅이메일 조건 (최소 @, . 포함)/비밀번호 조건 (8자 이상 입력)
+  - ✅이메일과 비밀번호가 모두 입력되어 있고, 조건을 만족해야만 제출 버튼 활성화
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 로그인 API 를 호출하고, 올바른 응답을 받았을 때 루드 경로로 이동
+  - ✅응답으로 받은 토큰은 로컬 스토리지에 저장
+  - ❌다음 로그인 시 토큰이 존재한다면 루트 경로로 리다이렉트
+  - ❌토큰이 유효하지 않을 시 사용자에게 알리고 로그인 페이지로 리다이렉트
 
-### `npm test`
+### Assignment 2 - Todo List
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Todo List API 를 호출하여 Todo List CRUD 기능 구현
 
-### `npm run build`
+  - ✅목록 / 상세 영역으로 나누어 구현
+  - ✅Todo 목록 (getTodos-GET)
+  - ✅Todo 추가 (createTodo)
+  - ❌Todo 수정 (updateTodo)
+  - ✅Todo 삭제 (deleteTodo)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 한 화면 내에서 Todo List 와 개별 Todo 의 상세를 확인
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - ✅새로고침 했을 때 현재 상태 유지
+  - ✅개별 Todo 를 조회 순서에 따라 페이지 뒤로가기를 통하여 조회
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현
+  - ✅수정되는 Todo 의 내용이 목록에도 실시간으로 반영

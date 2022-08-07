@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "../../atoms/Button/index";
 import { Input } from "../../atoms/Input";
 import { SignupFormContainer, SignupTitle } from "./style";
@@ -11,6 +11,8 @@ type Inputs = {
 
 const SignupForm = () => {
   const [inputs, setinputs] = useState<Inputs>({});
+  const [IsDisabled, setIsDisabled] = useState(true);
+  const [IsValid, setIsValid] = useState(false);
   const navigate = useNavigate();
 
   const handleInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +25,40 @@ const SignupForm = () => {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     fetch();
   };
+
+  const checkDisabled = () => {
+    if (IsValid) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  };
+
+  const checkValidation = () => {
+    const validEmail = /\w+@\w+\.\w+(\. \w+)?/;
+    const validPw = /.{7,}/;
+
+    if (
+      validEmail.test(inputs.id) &&
+      validPw.test(inputs.pw) &&
+      inputs.id &&
+      inputs.pw
+    ) {
+      checkDisabled();
+      setIsValid(true);
+    } else {
+      checkDisabled();
+      setIsValid(false);
+    }
+  };
+
+  useEffect(() => {
+    checkValidation();
+  }, [inputs.id, inputs.pw]);
+
+  useEffect(() => {
+    checkDisabled();
+  }, [checkValidation]);
 
   const fetch = async () => {
     const params = {
@@ -62,7 +98,11 @@ const SignupForm = () => {
         onChangeFunc={handleInputs}
         password={true}
       />
-      <Button buttonName='submit' onClickFunc={(e) => handleSubmit(e)}>
+      <Button
+        buttonName='submit'
+        onClickFunc={handleSubmit}
+        idDisabled={IsDisabled}
+      >
         회원가입
       </Button>
     </SignupFormContainer>

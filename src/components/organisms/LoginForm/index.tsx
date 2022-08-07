@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Login } from "../../../common/api/Auth";
 import { Button } from "../../atoms/Button/index";
@@ -11,6 +11,8 @@ type Inputs = {
 
 const LoginForm = () => {
   const [inputs, setinputs] = useState<Inputs>({});
+  const [IsDisabled, setIsDisabled] = useState(true);
+  const [IsValid, setIsValid] = useState(false);
   const navigate = useNavigate();
 
   const handleInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,6 +25,40 @@ const LoginForm = () => {
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     fetch();
   };
+
+  const checkDisabled = () => {
+    if (IsValid) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  };
+
+  const checkValidation = () => {
+    const validEmail = /\w+@\w+\.\w+(\. \w+)?/;
+    const validPw = /.{7,}/;
+
+    if (
+      validEmail.test(inputs.id) &&
+      validPw.test(inputs.pw) &&
+      inputs.id &&
+      inputs.pw
+    ) {
+      checkDisabled();
+      setIsValid(true);
+    } else {
+      checkDisabled();
+      setIsValid(false);
+    }
+  };
+
+  useEffect(() => {
+    checkValidation();
+  }, [inputs.id, inputs.pw]);
+
+  useEffect(() => {
+    checkDisabled();
+  }, [checkValidation]);
 
   const fetch = async () => {
     const params = {
@@ -63,7 +99,11 @@ const LoginForm = () => {
         onChangeFunc={handleInputs}
         password={true}
       />
-      <Button buttonName='submit' onClickFunc={(e) => handleSubmit(e)}>
+      <Button
+        buttonName='submit'
+        onClickFunc={handleSubmit}
+        idDisabled={IsDisabled}
+      >
         로그인
       </Button>
       <Link to='/signup'>
