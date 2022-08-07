@@ -44,7 +44,7 @@ const DetailEditButton = styled.p`
 
 const StyledTitleTextBox = styled.textarea`
   ${FONT_STYLES.P_M}
-  width: 700px;
+  width: 1000px;
   height: 40px;
   font-size: 20px;
   padding-left: 10px;

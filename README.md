@@ -1,5 +1,7 @@
 ## :: 원티드 프리온보딩 챌린지 프론트엔드 코스 사전과제 ::
 
+## ✔️ 과제 목록
+
 ### Assignment 1 - Login/SignUp
 
 - /auth 경로에 로그인/ 회원가입 기능을 개발
@@ -34,3 +36,44 @@
 
 - 한 페이지 내에서 새로고침 없이 데이터가 정합성을 갖추도록 구현
   - ❌수정되는 Todo 의 내용이 목록에도 실시간으로 반영
+
+## ✔️ 개발 결과
+
+### Assignment 1 - Login/SignUp
+
+- login
+  ![image](https://user-images.githubusercontent.com/64029753/183293881-51a05edb-e20f-47b8-8e52-3b2e6156f983.png)
+
+- signup
+  ![image](https://user-images.githubusercontent.com/64029753/183293900-ff8c4514-d30d-402a-ac53-b4dfabea83f7.png)
+
+### Assignment 2 - Todo List
+
+- Todo 목록 / 상세  
+  ![image](https://user-images.githubusercontent.com/64029753/183293921-de681039-803e-4028-b5c3-8e184e4e6504.png)
+
+- Todo 추가
+  ![image](https://user-images.githubusercontent.com/64029753/183293980-dab404f5-d146-4e87-ac03-e3fb87e5f10e.png)
+
+- Todo 수정
+  ![image](https://user-images.githubusercontent.com/64029753/183294096-1c4c28e7-d5f7-4139-a4c7-88c06d4dd2b7.png)
+
+- Todo 삭제
+  ![image](https://user-images.githubusercontent.com/64029753/183294221-ecbd91d5-56f1-4d69-874f-6e71c1ff9cdb.png)
+
+## ✔️ 보충할 부분
+
+- 토큰 관리 및 라우팅
+
+  - 토큰이 있을 때와 없을 때 어떻게 구분하며, 리다이렉트를 어떻게 처리할 것인지
+  - 토큰의 유효성 검사는 어떻게 할 것인지
+  - 중첩 라우팅 개념 부족
+  - useSearchParams 에 대한 이해가 더 필요
+
+- Todo
+
+  - 수정이 되었을 때 어떻게 목록을 최신화 할 것인지
+
+- 프로젝트 전체
+  - api 를 연결하면서 컴포넌트들이 복잡하게 얽히게 됨. 이를 해결하기 위해 전역 상태관리 도입이 필요
+  - 중복되는 input handling 같은 경우는 하나의 hook 으로 만드는 것이 좋을듯함

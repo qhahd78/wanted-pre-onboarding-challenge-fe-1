@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { CreateTodo, DeleteTodo, GetTodos } from "../../../../common/api/Todo";
@@ -48,11 +49,15 @@ const Pannel = () => {
 
   // delete todo
   const deleteTodo = useCallback(async (todoId?: string) => {
-    try {
-      await DeleteTodo(todoId);
-      fetch();
-    } catch (error) {
-      return error;
+    if (confirm("해당 할 일을 삭제하시겠습니까?")) {
+      try {
+        await DeleteTodo(todoId);
+        fetch();
+      } catch (error) {
+        return error;
+      }
+    } else {
+      return;
     }
   }, []);
 
