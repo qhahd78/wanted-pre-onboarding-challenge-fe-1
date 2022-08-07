@@ -59,7 +59,7 @@ const DetailContent = ({
             name='title'
             value={TodoData.title}
             onChange={(e) => {
-              setTodoData({ title: e.target.value });
+              setTodoData({ ...TodoData, title: e.target.value });
             }}
           />
         ) : (
@@ -97,7 +97,7 @@ const DetailContent = ({
             name='content'
             value={TodoData.content}
             onChange={(e) => {
-              setTodoData({ content: e.target.value });
+              setTodoData({ ...TodoData, content: e.target.value });
               console.log(TodoData);
             }}
           />

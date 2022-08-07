@@ -14,7 +14,6 @@ const DetailPannel = ({ todoId }: DetailPannelProperties) => {
     try {
       const res = await GetTodoById(todoId);
       setTodo(res.data.data);
-      console.log(Todo);
     } catch (error) {
       return error;
     }
@@ -25,8 +24,7 @@ const DetailPannel = ({ todoId }: DetailPannelProperties) => {
   }, [todoId]);
 
   const updateTodo = async (todoData: any) => {
-    const res = await UpdateTodo(todoId, todoData);
-    console.log(res);
+    await UpdateTodo(todoId, todoData);
   };
 
   return (
